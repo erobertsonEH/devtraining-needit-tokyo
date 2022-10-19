@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="DELETE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_58872_needit_needit</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>NeedIt When needed field date</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+// rightnow stores the current time
+  var rightnow = new GlideDateTime();
+  // Create a GlideDateTime object for the When needed date
+  var whenNeeded = new GlideDateTime(current.u_when_needed);
+
+  // If the When needed date is before rightnow, do not write the record to the database
+  // Output an error message to the screen
+  if(whenNeeded.before(rightnow)){
+  gs.addErrorMessage("When needed date cannot be in the past.  Your request has not been saved to the database.");
+  current.setAbortAction(true);
+}
+	
+  // Challenge:  Do not allow same-day requests
+  // Get the date portion of rightnow and whenNeeded (no timestamp)
+  var today = rightnow.getLocalDate();
+  var istoday = whenNeeded.getLocalDate();
+  // Compare today and istoday to see if they are the same day
+  if(today.compareTo(istoday) == 0){
+    gs.addErrorMessage("m2.");
+    current.setAbortAction(true);
+  }
+	
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-10-18 20:24:39</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>c5093df697a21110ce593d400153aff0</sys_id>
+        <sys_mod_count>16</sys_mod_count>
+        <sys_name>NeedIt When needed field date</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_script_c5093df697a21110ce593d400153aff0</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-10-19 01:27:38</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+    <sys_translated_text action="DELETE" query="documentkey=c5093df697a21110ce593d400153aff0"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</application>
+        <file_path/>
+        <instance_id>0460b32fdb9bb340b847ac44d4961978</instance_id>
+        <instance_name>dev92230</instance_name>
+        <name>sys_script_c5093df697a21110ce593d400153aff0</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_script"&gt;&lt;sys_script action="INSERT_OR_UPDATE"&gt;&lt;abort_action&gt;false&lt;/abort_action&gt;&lt;access&gt;package_private&lt;/access&gt;&lt;action_delete&gt;false&lt;/action_delete&gt;&lt;action_insert&gt;true&lt;/action_insert&gt;&lt;action_query&gt;false&lt;/action_query&gt;&lt;action_update&gt;true&lt;/action_update&gt;&lt;active&gt;true&lt;/active&gt;&lt;add_message&gt;false&lt;/add_message&gt;&lt;advanced&gt;true&lt;/advanced&gt;&lt;change_fields&gt;false&lt;/change_fields&gt;&lt;client_callable&gt;false&lt;/client_callable&gt;&lt;collection&gt;x_58872_needit_needit&lt;/collection&gt;&lt;condition/&gt;&lt;description/&gt;&lt;execute_function&gt;false&lt;/execute_function&gt;&lt;filter_condition/&gt;&lt;is_rest&gt;false&lt;/is_rest&gt;&lt;message/&gt;&lt;name&gt;NeedIt When needed field date&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;priority&gt;100&lt;/priority&gt;&lt;rest_method/&gt;&lt;rest_method_text/&gt;&lt;rest_service/&gt;&lt;rest_service_text/&gt;&lt;rest_variables/&gt;&lt;role_conditions/&gt;&lt;script&gt;&lt;![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+// rightnow stores the current time
+  var rightnow = new GlideDateTime();
+  // Create a GlideDateTime object for the When needed date
+  var whenNeeded = new GlideDateTime(current.u_when_needed);
+
+  // If the When needed date is before rightnow, do not write the record to the database
+  // Output an error message to the screen
+  if(whenNeeded.before(rightnow)){
+  gs.addErrorMessage("When needed date cannot be in the past.  Your request has not been saved to the database.");
+  current.setAbortAction(true);
+}
+	
+  // Challenge:  Do not allow same-day requests
+  // Get the date portion of rightnow and whenNeeded (no timestamp)
+  var today = rightnow.getLocalDate();
+  var istoday = whenNeeded.getLocalDate();
+  // Compare today and istoday to see if they are the same day
+  if(today.compareTo(istoday) == 0){
+    gs.addErrorMessage("m2.");
+    current.setAbortAction(true);
+  }
+	
+
+})(current, previous);]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-10-18 20:24:39&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;c5093df697a21110ce593d400153aff0&lt;/sys_id&gt;&lt;sys_mod_count&gt;16&lt;/sys_mod_count&gt;&lt;sys_name&gt;NeedIt When needed field date&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="NeedIt" source="x_58872_needit"&gt;6ead8e780f603200cd674f8ce1050ed1&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="NeedIt"&gt;6ead8e780f603200cd674f8ce1050ed1&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_c5093df697a21110ce593d400153aff0&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-10-19 01:27:38&lt;/sys_updated_on&gt;&lt;template/&gt;&lt;when&gt;before&lt;/when&gt;&lt;/sys_script&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=c5093df697a21110ce593d400153aff0"/&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>1195139135</payload_hash>
+        <record_name>NeedIt When needed field date</record_name>
+        <reverted_from/>
+        <source>95f2675297221110ce593d400153af0f</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-10-19 01:27:38</sys_created_on>
+        <sys_id>ecbe76f697a61110ce593d400153af14</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>183edda6e300000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-10-19 01:27:38</sys_updated_on>
+        <type>Business Rule</type>
+        <update_guid>64be76f6aca6111055d85483b1737a14</update_guid>
+        <update_guid_history>64be76f6aca6111055d85483b1737a14:1195139135,5dddbe767ea611103da9ad2fac223db1:-1759498602,579dba7670a61110efa932931fb4e2bb:-818783115,43fcb6760ca611107de20b986d1b4aac:1385692552,7a7cbe3679a6111076196e427053df12:241684549,fa2cf2b2c6a611100de5e16c87e72733:-1322469838,34abfeb250a611109fb732412965c915:686959827,518306fec0a21110bcc35101422d6428:1148008918,cfd2ce3239e211108204c24c5ee51979:-296289860,5eff75be06a21110476f84db12ea9798:-1436694224,de1ff17e75a21110c6cbb421b7ea73ed:-307243963,a6ae793ee4a21110e4444a91968acc7c:60071189,ee2ef9fa04a2111068c80a8bebb354f1:306250968,31ddb13a7aa21110171e5fcf3917a483:241245832,ff1d317abaa2111029f62efde14e71ae:-1475868281,2d0afdf6d2a211106165f52051b7bc98:-1895069829,9259b13a47a2111032f0c2a2648dc70d:845931651</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-10-19 01:28:52</sys_created_on>
+        <sys_db_object display_value="" name="sys_script">sys_script</sys_db_object>
+        <sys_id>0ee3eca8533d46fc8b4cff3ad1d80924</sys_id>
+        <sys_metadata>c5093df697a21110ce593d400153aff0</sys_metadata>
+        <sys_name>NeedIt When needed field date</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_parent display_value="NeedIt">28966f1697221110ce593d400153af05</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_scope_delete display_value="">94872a8897db403e8ee69a431de2fca4</sys_scope_delete>
+        <sys_update_name>sys_script_c5093df697a21110ce593d400153aff0</sys_update_name>
+        <sys_update_version display_value="sys_script_c5093df697a21110ce593d400153aff0">ecbe76f697a61110ce593d400153af14</sys_update_version>
+    </sys_metadata_delete>
+</record_update>
